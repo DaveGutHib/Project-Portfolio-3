@@ -4,13 +4,13 @@
 
 ![Banner image of game](/assets/images/Ultra_SF4_Banner.jpg)
 
-Street Fighter 4 is a game that released in 2008 in arcades to worldwide positive acclaim and ushered in a new era of growth and interest in the entire genre of fighting games that persists to this day.
+Street Fighter 4 is a game that released in 2008 in arcades to worldwide positive acclaim and ushered in a new era of growth and interest in the entire genre of fighting games which persists to this day.
 
 It's final version, Ultra Street Fighter 4, released on Arcade machines, the Xbox 360 and the Playstation 3 in 2014, and remains a fan favourite to this day.
 
 The core of the game play revolves around damaging your opponent to deplete their health (sometimes referred to as HP or Health Points).
 ![Example of an Ultra combo](assets/images/combo_sako_gif.gif)
-_The Legendary "Sako Combo"_
+_Health being depleted_
 
 
 There are only two win conditions:
@@ -19,14 +19,10 @@ There are only two win conditions:
 _This one is surprisingly easy to calculate_
 <br>
 2. There is a time limit per round. If nobody has had their health fully depleted when the time runs out, whoever has a higher percentage of their total health remaining wins. Most of the time this means whoever deals the most damage wins.
-![Example of a time over](assets/images/PLACEHOLDER.gif)
+![Example of a time over](assets/images/game_time_over.gif)
+_Left side Ryu has slightly more health than Right side Ryu_
 
-
-
-
-
-
-Despite the fact that **damage** is absolutely key to every win condition in the game, there are no calculators online or on the mobile app stores to allow players to work out how much total damage a particular combination of attacks (or "combo") would do. Having such a thing would help players to think about and optimise what they do when they're not playing.
+Despite the fact that **damage** is absolutely key to every win condition in the game, there are no calculators online or on the mobile app stores to allow players to work out how much total damage a particular combination of attacks (or "combo") would do. Having such a thing would help players to optimise what they do when they're not playing.
 
 ![Research searching for an existing calculator 1](assets/images/research_searching_for_existing_calculator.png)
 _On first search, only one calculator app shows up in the search results_
@@ -43,7 +39,7 @@ _Last developer comment was 9 years ago (2014 at time of writing). It is safe to
 
 A calculator still has value today even when playing the game, because health values are obfuscated behind a graphical _"HP bar"_ which, as it depletes, decreases in length and changes from yellow to red. Excluding when players have 100% health, and 0% health (when they are defeated), players can never actually know exactly how much health they currently have.
 ![HP Bar Screenshot](assets/images/game_screenshot_hp_bars.png)
-_A full length health bar usually represents 1000 health. Ryu probably has 850 health remaining. Abel maybe has 300? Even in game it's not very clear_
+_A full length health bar usually represents 1000 health. Ryu probably has 850 health remaining. Abel maybe has 300? Even within the game it's not very clear_
 
 
 ## Features
@@ -61,11 +57,19 @@ _A full length health bar usually represents 1000 health. Ryu probably has 850 h
 ---
 Code Logic on Paper
 
-![Code logic on paper ](assets/images/paper-planning-document-logic.jpg)
+![Code logic on paper ](assets/images/paper_planning_damage_formula.jpg)
 
-![Additional planning on paper ](assets/images/paper-planning-document-to-do-list.jpg)
+![Code logic on paper 2](assets/images/paper_planning_character_select.jpg)
+
+![Additional planning on paper ](assets/images/paper_planning_additional_scaling.jpg)
+
+
 
 ### Data Formatting
+
+Data from the json files looks as follows
+![Damage data example](assets/images/json_data_example_screenshot.png)
+
 
 The damage numbers are displayed as such:
 
@@ -80,9 +84,16 @@ Some damage is represented bafflingly confusingly
 "damage": "270*38x4*50x3[270*233]"
 
 
+
+
+
 ## Testing
 ---
 
+On the street fighter wiki I found the following claim regarding the formula
+![Street fighter wiki](assets/images/research_claim_that_red_focus_scales_by_3.png)
+
+This would have run contrary to 
 
 
 ## References
