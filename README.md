@@ -89,6 +89,16 @@ From this it must be concluded that this value is incorrect, so it was removed a
 Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
 ![Manually changing key names](assets/images/coding_final_testing_dictionary.png)
 
+There are 44 different characters to choose from, each with a different amount of health, which will affect the damage calculation differently.
+But there are only 6 different possible HP totals, which are 850, 1100 and all the increments of 50 in between.
+So for simplicity the health values have been recorded in a list with the amount as the key, and the names as the values.
+
+![Manually changing key names](assets/images/coding_healthAmounts.png)
+
+There are 47 names here, as the names of Balrog, M.Bison and Vega are assigned to different characters in the English and Japanese version of the game.
+So including their territory agnostic community monikers of Boxer, Dictator and Claw adds future-proofing in the event of the application being run by Japanese users.
+
+
 ### Data Formatting
 
 Data from the json files looks as follows
