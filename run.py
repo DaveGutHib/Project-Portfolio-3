@@ -53,5 +53,4 @@ ryu = {
         "ultra2": [270,233],
     	 }
 
-user_input= input("Please enter an attack name");
-print(user_input);
+user_input= input("Please enter an attack name:  ");
