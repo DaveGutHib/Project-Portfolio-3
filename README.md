@@ -63,7 +63,31 @@ Code Logic on Paper
 
 ![Additional planning on paper ](assets/images/paper_planning_additional_scaling.jpg)
 
+## Coding
 
+While coding, before tackling the full dataset of all json files for all characters, a more simplified dataset was created by hand of just the damage numbers, of just the character Ryu.
+
+This file is called RyuList.json
+
+To expedite the testing of this function, the names of the attacks were shortened down from their technically correct names to community slang words
+
+For example: The attack "Hurrican Kick" is shortened to what the character shouts when the attack is performed, which is "Tatsu"
+
+![Manually changing key names](assets/images/coding_changing_long_form_names_to_slang.png)
+
+Also to simplify user input error checking later, all string characters are changed to lowercase
+
+Additionally for one of the attacks "Shoryuken lp/mp FADC" the damage value was listed as [0]. Without going into too much detail, "FADC" is community shorthand for cancelling an attack on the first hit and ignoring the remaining hits.
+So an attack of [40, 50, 60]; if "FADC"d; would be [40] only
+
+Since the damage values of "Shoryuken lp" and "Shoryuken mp" are listed as [100] and [80,50] respectively, there is no scenario where performing "Shoryuken lp/mp FADC" would return the same value for either, nor return a value of [0]
+
+![Manually changing key names](assets/images/coding_presumably_incorrect_value.png)
+
+From this it must be concluded that this value is incorrect, so it was removed altogether.
+
+Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
+![Manually changing key names](assets/images/coding_final_testing_dictionary.png)
 
 ### Data Formatting
 

@@ -1,10 +1,10 @@
-import json
+# import json
 
-a = open('/assets/jsons/RyuCopy.json');
+# a = open('/assets/jsons/RyuCopy.json');
 
-data = json.load(x)
+# data = json.load(x)
 
-for i in data['damage']:
-    print(i)
+# for i in data['damage']:
+#     print(i)
 
-a.close()
+# a.close()
