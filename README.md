@@ -86,6 +86,11 @@ Since the damage values of "Shoryuken lp" and "Shoryuken mp" are listed as [100]
 
 From this it must be concluded that this value is incorrect, so it was removed altogether.
 
+This was confirmed when normalising the data for Deejay, where the FADC entry for "Double Rolling Sobat mk" (simplified to "sobat mk") is listed as [60], which is the correct value when taking only the first entry from the previous entry of [60,50]
+
+![Manually changing key names](assets/images/coding_confirmation_of_correct_value.png)
+
+
 Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
 ![Manually changing key names](assets/images/coding_final_testing_dictionary.png)
 
