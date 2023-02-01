@@ -4,9 +4,9 @@
 
 ![Banner image of game](/assets/images/Ultra_SF4_Banner.jpg)
 
-Street Fighter 4 is a game that released in 2008 in arcades to worldwide positive acclaim and ushered in a new era of growth and interest in the entire genre of fighting games which persists to this day.
+**Street Fighter 4** is a game that released in 2008 in arcades to worldwide positive acclaim and ushered in a new era of growth and interest in the entire genre of fighting games which persists to this day.
 
-It's final version, Ultra Street Fighter 4, released on Arcade machines, the Xbox 360 and the Playstation 3 in 2014, and remains a fan favourite to this day.
+It's final version, **Ultra Street Fighter 4**, released on Arcade machines, the Xbox 360 and the Playstation 3 in 2014, and remains a fan favourite to this day.
 
 The core of the game play revolves around damaging your opponent to deplete their health (sometimes referred to as HP or Health Points).
 ![Example of an Ultra combo](assets/images/combo_sako_gif.gif)
@@ -18,7 +18,7 @@ There are only two win conditions:
 ![Example of an Ultra combo](assets/images/combo_guy_ultra_gif.gif)
 _This one is surprisingly easy to calculate_
 <br>
-2. There is a time limit per round. If nobody has had their health fully depleted when the time runs out, whoever has a higher percentage of their total health remaining wins. Most of the time this means whoever deals the most damage wins.
+2. There is a time limit per round. If nobody has had their health fully depleted when the time runs out, whoever has a higher percentage of their total health remaining wins. _Most_ of the time this means whoever deals the most damage wins.
 ![Example of a time over](assets/images/game_time_over.gif)
 _Left side Ryu has slightly more health than Right side Ryu_
 
@@ -37,7 +37,7 @@ _This link is dead_
 _Last developer comment was 9 years ago (2014 at time of writing). It is safe to assume the project is dead_
 
 
-A calculator still has value today even when playing the game, because health values are obfuscated behind a graphical _"HP bar"_ which, as it depletes, decreases in length and changes from yellow to red. Excluding when players have 100% health, and 0% health (when they are defeated), players can never actually know exactly how much health they currently have.
+A calculator still has value even when playing the game today, because health values are obfuscated behind a graphical **"HP bar"** which, as it depletes, decreases in length and changes from yellow to red. Excluding when players have 100% health, and 0% health (when they are defeated), players can never actually know exactly how much health they currently have.
 ![HP Bar Screenshot](assets/images/game_screenshot_hp_bars.png)
 _A full length health bar usually represents 1000 health. Ryu probably has 850 health remaining. Abel maybe has 300? Even within the game it's not very clear_
 
@@ -63,6 +63,15 @@ Code Logic on Paper
 
 ![Additional planning on paper ](assets/images/paper_planning_additional_scaling.jpg)
 
+Note that for "Red Focus Attack combo_count" the value is left blank. This is due to discovering this reference on a Street Fighter wiki specifically referencing that Red Focus Attacks increase the combo count by 3, but this seemed incorrect.
+
+![Claim that red focus scales by 3 ](assets/images/research_claim_that_red_focus_scales_by_3.png)
+
+As wikis are publically editable, this claim is not attributed to any source, but would break from the game convention that all actions advance the combo count by 1, with the two exceptions of Focus Attacks and Ultra Combos which advance the combo count by 2. Nothing anywhere in the code should advance it by 3.
+
+Upon addition research, it was confirmed that **[this wiki information](https://streetfighter.fandom.com/wiki/Damage_Scaling)** **is incorrect** as assumed, but the process of "deconfirming" the information still wasted valuable time.
+
+After this project is completed and graded, this wiki will be edited to reflect the true information for anyone looking into this damage formula in the future.
 
 
 
@@ -110,7 +119,7 @@ This was confirmed when normalising the data for **Deejay**, where the **FADC** 
 ![Manually changing key names](assets/images/coding_confirmation_of_correct_value.png)
 _Even though this value is correct, it was still removed. Since how FADC values are derived are consistent across all characters and moves, this has the potential to be universally automated at the code level. Therefore individual values referencing it are redundant_
 
-Further complications emerged when normalising the damage data for Chun-Li's attacks, where a value of **N** is presented, but never defined
+Further complications emerged when normalising the damage data for **Chun-Li**'s attacks, where a value of **N** is presented, but never defined
 
 ![Undefined N value](assets/images/coding_chunli_challenge.png)
 
