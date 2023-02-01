@@ -89,6 +89,7 @@ From this it must be concluded that this value is incorrect, so it was removed a
 This was confirmed when normalising the data for Deejay, where the FADC entry for "Double Rolling Sobat mk" (simplified to "sobat mk") is listed as [60], which is the correct value when taking only the first entry from the previous entry of [60,50]
 
 ![Manually changing key names](assets/images/coding_confirmation_of_correct_value.png)
+_Even though this value is correct, it was still removed. Since how FADC values are derived are consistent across all characters and moves, this has the potential to be universally automated at the code level. Therefore individual values referencing it are redundant_
 
 
 Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
