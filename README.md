@@ -63,46 +63,7 @@ Code Logic on Paper
 
 ![Additional planning on paper ](assets/images/paper_planning_additional_scaling.jpg)
 
-## Coding
 
-While coding, before tackling the full dataset of all json files for all characters, a more simplified dataset was created by hand of just the damage numbers, of just the character Ryu.
-
-This file is called RyuList.json
-
-To expedite the testing of this function, the names of the attacks were shortened down from their technically correct names to community slang words
-
-For example: The attack "Hurrican Kick" is shortened to what the character shouts when the attack is performed, which is "Tatsu"
-
-![Manually changing key names](assets/images/coding_changing_long_form_names_to_slang.png)
-
-Also to simplify user input error checking later, all string characters are changed to lowercase
-
-Additionally for one of the attacks "Shoryuken lp/mp FADC" the damage value was listed as [0]. Without going into too much detail, "FADC" is community shorthand for cancelling an attack on the first hit and ignoring the remaining hits.
-So an attack of [40, 50, 60]; if "FADC"d; would be [40] only
-
-Since the damage values of "Shoryuken lp" and "Shoryuken mp" are listed as [100] and [80,50] respectively, there is no scenario where performing "Shoryuken lp/mp FADC" would return the same value for either, nor return a value of [0]
-
-![Manually changing key names](assets/images/coding_presumably_incorrect_value.png)
-
-From this it must be concluded that this value is incorrect, so it was removed altogether.
-
-This was confirmed when normalising the data for Deejay, where the FADC entry for "Double Rolling Sobat mk" (simplified to "sobat mk") is listed as [60], which is the correct value when taking only the first entry from the previous entry of [60,50]
-
-![Manually changing key names](assets/images/coding_confirmation_of_correct_value.png)
-_Even though this value is correct, it was still removed. Since how FADC values are derived are consistent across all characters and moves, this has the potential to be universally automated at the code level. Therefore individual values referencing it are redundant_
-
-
-Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
-![Manually changing key names](assets/images/coding_final_testing_dictionary.png)
-
-There are 44 different characters to choose from, each with a different amount of health, which will affect the damage calculation differently.
-But there are only 6 different possible HP totals, which are 850, 1100 and all the increments of 50 in between.
-So for simplicity the health values have been recorded in a list with the amount as the key, and the names as the values.
-
-![Manually changing key names](assets/images/coding_healthAmounts.png)
-
-There are 47 names here, as the names of Balrog, M.Bison and Vega are assigned to different characters in the English and Japanese version of the game.
-So including their territory agnostic community monikers of Boxer, Dictator and Claw adds future-proofing in the event of the application being run by Japanese users.
 
 
 ### Data Formatting
@@ -122,6 +83,65 @@ But for convenience it would better if they were displayed as such:
 Some damage is represented bafflingly confusingly
 
 "damage": "270*38x4*50x3[270*233]"
+
+At the start of the project, before tackling the full dataset of all json files for all characters, a more simplified dataset was created by hand of just the damage numbers, of just the characters Ryu, Deejay and Chun-Li.
+
+These files are called RyuList.json, DeejayList.json and Chun-LiList.json
+
+To expedite the testing of this function, the names of the attacks were shortened down from their technically correct names to community slang words
+
+For example: The attack "Hurrican Kick" is shortened to what the character shouts when the attack is performed, which is "Tatsu"
+
+![Manually changing key names](assets/images/coding_changing_long_form_names_to_slang.png)
+
+Also to simplify user input error checking later, all string characters are changed to lowercase
+
+Additionally for one of the attacks **"Shoryuken lp/mp FADC"** the damage value was listed as **[0]**. Without going into too much detail, **"FADC"** is community shorthand for cancelling an attack on the first hit and ignoring the remaining hits.
+So an attack of **[40, 50, 60]**; if **"FADC"d**; would be **[40]** only
+
+Since the damage values of **"Shoryuken lp"** and **"Shoryuken mp"** are listed as **[100]** and **[80,50]** respectively, there is no scenario where performing **"Shoryuken lp/mp FADC"** would return the same value for either, nor return a value of **[0]**
+
+![Manually changing key names](assets/images/coding_presumably_incorrect_value.png)
+
+From this it must be concluded that this value is incorrect, so it was removed altogether.
+
+This was confirmed when normalising the data for **Deejay**, where the **FADC** entry for **"Double Rolling Sobat mk"** (simplified to **"sobat mk"**) is listed as **[60]**, which is the correct value when taking only the first damage number from the previous entry of **[60,50]**
+
+![Manually changing key names](assets/images/coding_confirmation_of_correct_value.png)
+_Even though this value is correct, it was still removed. Since how FADC values are derived are consistent across all characters and moves, this has the potential to be universally automated at the code level. Therefore individual values referencing it are redundant_
+
+Further complications emerged when normalising the damage data for Chun-Li's attacks, where a value of **N** is presented, but never defined
+
+![Undefined N value](assets/images/coding_chunli_challenge.png)
+
+Since the method for performing the attack is to rapidly hit the same button as quickly as possible, it could have been assumed that **N** would directly equal the number of button presses by the user. Even if this were assumed to be the case, this attack could not be implemented in the project without at least knowing the minimum and maximum values of **N**.
+
+In doing additional research on this point, a value was listed on the **[Supercombo Wiki](https://wiki.supercombo.gg/w/Ultra_Street_Fighter_IV/Chun-Li)** for the total **length** in time (not damage) for the attack. Here the standalone numbers (highlighted yellow) are the individual hits, and the numbers in parenthesis are the pauses between the hits.
+
+
+![Attack length in frames](assets/images/coding_chunli_challenge_2.png)
+
+Also the usage of square brackets [ ] in the data is stylistically used to represent one event with multiple different possible outcomes.
+
+By counting these yellow numbers, with consideration for the contexual meaning of square brackets; it seems clear that **N** can either be **4** or **8** or **12**.
+
+Requesting the value for **N** from the user would presume a lot of mechanical knowledge on their behalf, so instead of representing this attack as one action with three possible outcomes, it will instead be represeted as three different attacks.
+
+
+
+Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
+![Manually changing key names](assets/images/coding_final_testing_dictionary.png)
+
+There are 44 different characters to choose from, each with a different amount of health, which will affect the damage calculation differently.
+But there are only 6 different possible HP totals, which are 850, 1100 and all the increments of 50 in between.
+So for simplicity the health values have been recorded in a list with the amount as the key, and the names as the values.
+
+![Manually changing key names](assets/images/coding_healthAmounts.png)
+
+There are 47 names here, as the names of Balrog, M.Bison and Vega are assigned to different characters in the English and Japanese version of the game.
+So including their territory agnostic community monikers of Boxer, Dictator and Claw adds future-proofing in the event of the application being run by Japanese users.
+
+## Coding
 
 
 
