@@ -125,8 +125,10 @@ Also the usage of square brackets [ ] in the data is stylistically used to repre
 
 By counting these yellow numbers, with consideration for the contexual meaning of square brackets; it seems clear that **N** can either be **4** or **8** or **12**.
 
-Requesting the value for **N** from the user would presume a lot of mechanical knowledge on their behalf, so instead of representing this attack as one action with three possible outcomes, it will instead be represeted as three different attacks.
+Requesting the value for **N** from the user would presume a lot of mechanical knowledge on their behalf, so instead of representing this attack as one action with three possible outcomes, it will instead be represented as three different attacks.
 
+![Legs data represented in code](assets/images/coding_chunli_challenge_3.png)
+_"Mash" being community shorthand for pressing buttons as quickly as possible_
 
 
 Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
