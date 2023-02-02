@@ -1,6 +1,5 @@
 from healthAmounts import healthAmount;
 
-
 userCharacter = ""; 
 # which character the user is playing as and wishing to check the damage for.
 opponentCharacter = "";
@@ -16,18 +15,30 @@ settingUp = True;
 # condition intended to shut down the while loop
 stillCalculating = True;
 # condition intended to shut down the while loop
-implementedCharacters = {"Ryu", "Chun-Li", "Deejay"};
+implementedCharacters = {"ryu", "chun-li", "deejay"};
 # Unordered set containing characters currently with valid data for calculating
+validOpponents = healthAmount.values;
 
 while settingUp:
-        if userCharacter (input("Please enter your character name (Ryu, Deejay or Chun-Li)")) in implementedCharacters:
+        if userCharacter.lower (input("Please enter your character name (Ryu, Deejay or Chun-Li)")) not in implementedCharacters:
+                print("Please enter a valid character name");
+        else: 
+                print("Thank you")
+                if opponentCharacter.lower ("Please enter your opponent\'s character") not in validOpponents:
+                        print("Please enter a valid character name");
+                else:
+                        print("Thank you")
+                        settingUp = False;
+
+                
+                
                 #implment code to output list of character names
 
-                if opponentCharacter(input("Please enter your opponent\'s character")) in 
+                ##if opponentCharacter(input("Please enter your opponent\'s character")) in 
 
                 #implement code to output list of opponent names
-        else: 
-                print("Please enter a valid character name")
+
+                
 
 
 
@@ -76,5 +87,5 @@ while settingUp:
 #         "ultra2": [270,233],
 #     	 }
 
-user_input= str(input("Please enter an attack name:  "));
-print(user_input);
+# user_input= str(input("Please enter an attack name:  "));
+# print(user_input);
