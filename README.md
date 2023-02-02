@@ -63,19 +63,12 @@ Code Logic on Paper
 
 ![Additional planning on paper ](assets/images/paper_planning_additional_scaling.jpg)
 
-Note that for "Red Focus Attack combo_count" the value is left blank. This is due to discovering this reference on a Street Fighter wiki specifically referencing that Red Focus Attacks increase the combo count by 3, but this seemed incorrect.
-
-![Claim that red focus scales by 3 ](assets/images/research_claim_that_red_focus_scales_by_3.png)
-
-As wikis are publically editable, this claim is not attributed to any source, but would break from the game convention that all actions advance the combo count by 1, with the two exceptions of Focus Attacks and Ultra Combos which advance the combo count by 2. Nothing anywhere in the code should advance it by 3.
-
-Upon addition research, it was confirmed that **[this wiki information](https://streetfighter.fandom.com/wiki/Damage_Scaling)** **is incorrect** as assumed, but the process of "deconfirming" the information still wasted valuable time.
-
-After this project is completed and graded, this wiki will be edited to reflect the true information for anyone looking into this damage formula in the future.
-
+Note that for "Red Focus Attack combo_count" the value is left blank. This is due to discovering a reference on a Street Fighter wiki specifically referencing that Red Focus Attacks increase the combo count by 3, but this seemed incorrect. This will be further referenced in the coding section, but paper calculation was left blank until this value could be confirmed.
 
 
 ### Data Formatting
+
+#### Damage
 
 Data from the json files looks as follows
 ![Damage data example](assets/images/json_data_example_screenshot.png)
@@ -83,30 +76,30 @@ Data from the json files looks as follows
 
 The damage numbers are displayed as such:
 
-"damage": "60x5*173",
+**"damage": "60x5*173",**
 
 But for convenience it would better if they were displayed as such:
 
-"damage": [60,60,60,60,60,173]
+**"damage": [60,60,60,60,60,173]**
 
 Some damage is represented bafflingly confusingly
 
-"damage": "270*38x4*50x3[270*233]"
+**"damage": "270\*38x4\*50x3[270*233]"**
 
 At the start of the project, before tackling the full dataset of all json files for all characters, a more simplified dataset was created by hand of just the damage numbers, of just the characters Ryu, Deejay and Chun-Li.
 
-These files are called RyuList.json, DeejayList.json and Chun-LiList.json
+These files are called **RyuList.json**, **DeejayList.json** and **Chun-LiList.json**
 
 To expedite the testing of this function, the names of the attacks were shortened down from their technically correct names to community slang words
 
-For example: The attack "Hurrican Kick" is shortened to what the character shouts when the attack is performed, which is "Tatsu"
+For example: The attack **"Hurrican Kick"** is shortened to what the character shouts when the attack is performed, which is **"tatsu"**
 
 ![Manually changing key names](assets/images/coding_changing_long_form_names_to_slang.png)
 
-Also to simplify user input error checking later, all string characters are changed to lowercase
+Also to simplify user input error checking later, all string characters will be changed to lowercase
 
 Additionally for one of the attacks **"Shoryuken lp/mp FADC"** the damage value was listed as **[0]**. Without going into too much detail, **"FADC"** is community shorthand for cancelling an attack on the first hit and ignoring the remaining hits.
-So an attack of **[40, 50, 60]**; if **"FADC"d**; would be **[40]** only
+For example: an attack of **[40, 50, 60]**; if **"FADC"d**; would be **[40]** only
 
 Since the damage values of **"Shoryuken lp"** and **"Shoryuken mp"** are listed as **[100]** and **[80,50]** respectively, there is no scenario where performing **"Shoryuken lp/mp FADC"** would return the same value for either, nor return a value of **[0]**
 
@@ -125,10 +118,13 @@ Further complications emerged when normalising the damage data for **Chun-Li**'s
 
 Since the method for performing the attack is to rapidly hit the same button as quickly as possible, it could have been assumed that **N** would directly equal the number of button presses by the user. Even if this were assumed to be the case, this attack could not be implemented in the project without at least knowing the minimum and maximum values of **N**.
 
+![Chun-Li Lightning Legs](assets/images/chunli_kicks.gif)
+_Visually this attack is a rapid series of kicks_
+
 In doing additional research on this point, a value was listed on the **[Supercombo Wiki](https://wiki.supercombo.gg/w/Ultra_Street_Fighter_IV/Chun-Li)** for the total **length** in time (not damage) for the attack. Here the standalone numbers (highlighted yellow) are the individual hits, and the numbers in parenthesis are the pauses between the hits.
 
-
 ![Attack length in frames](assets/images/coding_chunli_challenge_2.png)
+
 
 Also the usage of square brackets [ ] in the data is stylistically used to represent one event with multiple different possible outcomes.
 
@@ -142,15 +138,18 @@ _"Mash" being community shorthand for pressing buttons as quickly as possible_
 
 Once finalised, the dictionary of strings for keys and lists for damage values looks as follows:
 ![Manually changing key names](assets/images/coding_final_testing_dictionary.png)
+_Ryu's data_
+
+#### Health
 
 There are 44 different characters to choose from, each with a different amount of health, which will affect the damage calculation differently.
-But there are only 6 different possible HP totals, which are 850, 1100 and all the increments of 50 in between.
-So for simplicity the health values have been recorded in a list with the amount as the key, and the names as the values.
+But there are only 6 different possible HP totals, which are 850, 1100 and all the increments of 50 in-between.
+So for simplicity the health values have been recorded in a dictionary with the amount as the key, and the names as a list of values.
 
 ![Manually changing key names](assets/images/coding_healthAmounts.png)
 
-There are 47 names here, as the names of Balrog, M.Bison and Vega are assigned to different characters in the English and Japanese version of the game.
-So including their territory agnostic community monikers of Boxer, Dictator and Claw adds future-proofing in the event of the application being run by Japanese users.
+There are 47 names here, as the names of **Balrog, M.Bison** and **Vega** are assigned to different characters in the English and Japanese version of the game.
+So including their territory agnostic community monikers of **Boxer, Dictator** and **Claw** adds future-proofing in the event of the application being run by Japanese users.
 
 ## Coding
 
@@ -161,10 +160,13 @@ So including their territory agnostic community monikers of Boxer, Dictator and 
 ## Testing
 ---
 
-On the street fighter wiki I found the following claim regarding the formula
-![Street fighter wiki](assets/images/research_claim_that_red_focus_scales_by_3.png)
+![Claim that red focus scales by 3 ](assets/images/research_claim_that_red_focus_scales_by_3.png)
 
-This would have run contrary to 
+As wikis are publically editable, this claim is not attributed to any source, but would break from the game convention that all actions advance the combo count by 1, with the two exceptions of Focus Attacks and Ultra Combos which advance the combo count by 2. Nothing anywhere in the code should advance it by 3.
+
+Upon addition research, it was confirmed that **[this wiki information](https://streetfighter.fandom.com/wiki/Damage_Scaling)** **is incorrect** as assumed, but the process of "deconfirming" the information still wasted valuable time.
+
+After this project is completed and graded, this wiki will be edited to reflect the true information for anyone looking into this damage formula in the future.
 
 
 ## References
