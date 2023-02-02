@@ -1,4 +1,4 @@
- "moves": {
+moves = {
         "cl.lp":[20],
         "cl.mp":[40,40],
         "cl.hp":[90],
