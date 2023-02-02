@@ -8,7 +8,7 @@
 #     print(i)
 
 # a.close()
-x=0
+x = 0
 total = 0
 comboCount = 0
 damageScaling = 1.0
@@ -40,4 +40,6 @@ while x != "q":
     print("Previous total", total)
     total = total + (damageScaling * int(x))
     print("New total", total)
-else: print("Thank you for playing. Final total is ", total)
+else: 
+    x = ""
+    print("Thank you for playing. Final total is ", total)

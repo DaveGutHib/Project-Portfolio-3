@@ -153,6 +153,22 @@ So including their territory agnostic community monikers of **Boxer, Dictator** 
 
 ## Coding
 
+One of the main two formulas used when calculating the damage inflicted is known as damaging scaling i.e. The more successive attacks that occur, the less and less damage they do. The exact formula is shown here as taken from the **[Supercombo Wiki](https://wiki.supercombo.gg/w/Ultra_Street_Fighter_IV/Game_Systems)**, but has been tested independently in the game for verification purposes.
+
+![Damage scaling table](assets/images/coding_damage_scaling_formula.png)
+
+To represent this in the code, two global variable were declared:
+- 1.0 was declared as damageScaling to represent this scaling
+- 0 was declared as comboCount to represent the number of actions taken thusfar by the user
+
+A while loop was used to continuously ask for user input, and increment the combo count by 1 for each input received.
+
+![Damage addition](assets/images/coding_damaging_adding_only.png)
+
+Then an if loop was used which begins at checking if the combo is already above or equal to 10 hits to apply the maximum scaling; then incrementally checks all the individual scaling values down to 3. It does not check for combo counts of 2 or 1, as those would be unscaled anyway.
+
+![Combo scaling](assets/images/coding_combo_count_scaling.png)
+
 
 
 
