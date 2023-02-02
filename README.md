@@ -164,6 +164,7 @@ To represent this in the code, two global variable were declared:
 A while loop was used to continuously ask for user input, and increment the combo count by 1 for each input received.
 
 ![Damage addition](assets/images/coding_damaging_adding_only.png)
+_The damagingScaling variable doesn't yet affect this calculation as it will always be 1_
 
 Then an if loop was used which begins at checking if the combo is already above or equal to 10 hits to apply the maximum scaling; then incrementally checks all the individual scaling values down to 3. It does not check for combo counts of 2 or 1, as those would be unscaled anyway.
 
@@ -175,6 +176,65 @@ Then an if loop was used which begins at checking if the combo is already above 
 
 ## Testing
 ---
+
+To test that the initial damage and combo scaling formula work correctly, along with the addition to the total, this is the terminal output from the initial test with liberal printing of the values at each stage
+
+Enter a number (press q to quit)100
+Combo Count 1
+X equals 100
+Previous total 0
+New total 100.0
+Enter a number (press q to quit)100
+Combo Count 2
+X equals 100
+Previous total 100.0
+New total 200.0
+Enter a number (press q to quit)100
+Combo Count 3
+X equals 100
+Previous total 200.0
+New total 280.0
+Enter a number (press q to quit)100
+Combo Count 4
+X equals 100
+Previous total 280.0
+New total 350.0
+Enter a number (press q to quit)100
+Combo Count 5
+X equals 100
+Previous total 350.0
+New total 410.0
+Enter a number (press q to quit)100
+Combo Count 6
+X equals 100
+Previous total 410.0
+New total 460.0
+Enter a number (press q to quit)100
+Combo Count 7
+X equals 100
+Previous total 460.0
+New total 500.0
+Enter a number (press q to quit)100
+Combo Count 8
+X equals 100
+Previous total 500.0
+New total 530.0
+Enter a number (press q to quit)100
+Combo Count 9
+X equals 100
+Previous total 530.0
+New total 550.0
+Enter a number (press q to quit)100
+Combo Count 10
+X equals 100
+Previous total 550.0
+New total 560.0
+Enter a number (press q to quit)
+
+As can be seen, adding 100 every time produces correct results, in that by 10th 100, it has been scaled down to 10 damage only
+
+So while ten successive 100s in regular maths would produce a result of **1000**; _a combo_ of ten successive 100s in **Street Fighter 4** produces a result of **560**
+
 
 ![Claim that red focus scales by 3 ](assets/images/research_claim_that_red_focus_scales_by_3.png)
 
