@@ -40,8 +40,7 @@ while x != "q":
         damageScaling = 0.7
     elif comboCount == 3:
         damageScaling = 0.8
-    else:
-        pass
+
     print("HP before combo ", opponentCurrentHP)
     if (opponentCurrentHP/opponentMaxHP) <= 0.15:
         hpScaling = 0.75
@@ -49,8 +48,7 @@ while x != "q":
         hpScaling = 0.90
     elif (opponentCurrentHP/opponentMaxHP) <= 0.50:
         hpScaling = 0.95
-    else:
-        pass
+
     print("Combo Count ", comboCount)
     print("Attack value", x)
     print("Total Damage before Subtraction ", total)
@@ -59,4 +57,4 @@ while x != "q":
     print("Total Damage to this point ", total)
     print("HP after combo ", opponentCurrentHP)
 
-("Thank you for playing. Final total is ", total)
+("Thank you for playing. Final total is ", opponentCurrentHP)

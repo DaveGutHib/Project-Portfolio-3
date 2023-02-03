@@ -57,11 +57,11 @@ _A full length health bar usually represents 1000 health. Ryu probably has 850 h
 ---
 Code Logic on Paper
 
-![Code logic on paper ](assets/images/paper_planning_damage_formula.JPG)
+![Code logic on paper ](assets/images/paper_planning_damage_formula.jpg)
 
-![Code logic on paper 2](assets/images/paper_planning_character_select.JPG)
+![Code logic on paper 2](assets/images/paper_planning_character_select.jpg)
 
-![Additional planning on paper ](assets/images/paper_planning_additional_scaling.JPG)
+![Additional planning on paper ](assets/images/paper_planning_additional_scaling.jpg)
 
 Note that for "Red Focus Attack combo_count" the value is left blank. This is due to discovering a reference on a Street Fighter wiki specifically referencing that Red Focus Attacks increase the combo count by 3, but this seemed incorrect. This will be further referenced in the coding section, but paper calculation was left blank until this value could be confirmed.
 
