@@ -6,3 +6,16 @@ healthAmount = {
     900: ["C.Viper", "Dhalsim", "El Fuerte", "Evil Ryu", "Gen", "Ibuki", "Yang", "Yun"],
     850: ["Akuma", "Seth"],
 };
+
+def inputHealth(message):
+  while True:
+    try:
+       userInput = int(input(message))       
+    except ValueError:
+       print("Not an integer! Try again.")
+       continue
+    else:
+       return userInput 
+       break 
+     
+ 

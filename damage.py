@@ -1,3 +1,4 @@
+from healthAmounts import inputHealth
 # import json
 
 # a = open('/assets/jsons/RyuCopy.json');
@@ -12,10 +13,14 @@ x = 0
 total = 0
 comboCount = 0
 damageScaling = 1.0
+hpScaling = 1.0
+
+opponentMaxHP = inputHealth("What is your opponent's max HP: ")
+opponentCurrentHP = inputHealth("What is your opponent's current HP: ")
 
 
 while x != "q":
-    x = input("Enter a number (press q to quit)")
+    x = input("Enter the damage of the attack (press q to quit) ")
     comboCount = comboCount + 1
     if comboCount >= 10:
         damageScaling = 0.1
@@ -35,11 +40,23 @@ while x != "q":
         damageScaling = 0.8
     else:
         pass
-    print("Combo Count", comboCount)
-    print("X equals", x)
-    print("Previous total", total)
-    total = total + (damageScaling * int(x))
-    print("New total", total)
+    print("HP before combo ", opponentCurrentHP)
+    if (opponentCurrentHP/opponentMaxHP) <= 0.15:
+        hpScaling = 0.75
+    elif (opponentCurrentHP/opponentMaxHP) <= 0.25:
+        hpScaling = 0.90
+    elif (opponentCurrentHP/opponentMaxHP) <= 0.50:
+        hpScaling = 0.95
+    else:
+        pass
+    print("Combo Count ", comboCount)
+    print("Combo Count ", x)
+    print("Total Damage before Subtraction ", total)
+    total = total + (hpScaling * damageScaling * int(x))
+    opponentCurrentHP = opponentCurrentHP - (hpScaling * damageScaling * int(x))
+    print("Total damage after Subtraction ", total)
+    print("HP after combo ", opponentCurrentHP)
+
 else: 
     x = ""
     print("Thank you for playing. Final total is ", total)
