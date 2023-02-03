@@ -1,26 +1,17 @@
 from healthAmounts import inputHealth
-# import json
 
-# a = open('/assets/jsons/RyuCopy.json');
-
-# data = json.load(x)
-
-# for i in data['damage']:
-#     print(i)
-
-# a.close()
 x = 0
 total = 0
 comboCount = 0
 damageScaling = 1.0
 hpScaling = 1.0
 
-opponentMaxHP = inputHealth("What is your opponent's max HP: ")
-opponentCurrentHP = inputHealth("What is your opponent's current HP: ")
+opponentMaxHP = inputHealth("What is your opponent's max HP: \n")
+opponentCurrentHP = inputHealth("What is your opponent's current HP: \n")
 
 
 while x != "q":
-    x = input("Enter the damage of the attack (press q to quit) ")
+    x = input("Enter the damage of the attack (press q to quit): \n")
     if (x == "q" or x == "Q"):
         break
     comboCount = comboCount + 1
