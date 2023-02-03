@@ -50,7 +50,7 @@ while x != "q":
     else:
         pass
     print("Combo Count ", comboCount)
-    print("Combo Count ", x)
+    print("Attack value", x)
     print("Total Damage before Subtraction ", total)
     total = total + (hpScaling * damageScaling * int(x))
     opponentCurrentHP = opponentCurrentHP - (hpScaling * damageScaling * int(x))
