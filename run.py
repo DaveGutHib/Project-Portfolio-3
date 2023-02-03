@@ -1,91 +1,51 @@
-from healthAmounts import healthAmount;
+from healthAmounts import inputHealth
 
-userCharacter = ""; 
-# which character the user is playing as and wishing to check the damage for.
-opponentCharacter = "";
-# which character the user is doing damage to and calculating the remaining health for.
-opponentStartingHealth = 0;
-# global variable for the starting health of the opponent character. Will be a number between 850 and 1100.
-comboCount= 0;
-# increments as more attacks are performed in a row. As this variable increases, combo damage decreases.
-healthCheck = 1;
-# at regular points the opponent health will be checked and then multiplied by this number.
-# at full health they will receive full damage (multiplied by 1), but this variable will decrease proportional to their health.
-settingUp = True;
-# condition intended to shut down the while loop
-stillCalculating = True;
-# condition intended to shut down the while loop
-implementedCharacters = {"ryu", "chun-li", "deejay"};
-# Unordered set containing characters currently with valid data for calculating
-validOpponents = healthAmount.values;
+x = 0
+total = 0
+comboCount = 0
+damageScaling = 1.0
+hpScaling = 1.0
 
-while settingUp:
-        if userCharacter.lower (input("Please enter your character name (Ryu, Deejay or Chun-Li)")) not in implementedCharacters:
-                print("Please enter a valid character name");
-        else: 
-                print("Thank you")
-                if opponentCharacter.lower ("Please enter your opponent\'s character") not in validOpponents:
-                        print("Please enter a valid character name");
-                else:
-                        print("Thank you")
-                        settingUp = False;
-
-                
-                
-                #implment code to output list of character names
-
-                ##if opponentCharacter(input("Please enter your opponent\'s character")) in 
-
-                #implement code to output list of opponent names
-
-                
+opponentMaxHP = inputHealth("What is your opponent's max HP: \n")
+opponentCurrentHP = inputHealth("What is your opponent's current HP: \n")
 
 
+while x != "q":
+    x = input("Enter the damage of the attack (press q to quit): \n")
+    if (x == "q" or x == "Q"):
+        break
+    comboCount = comboCount + 1
+    if comboCount >= 10:
+        damageScaling = 0.1
+    elif comboCount == 9:
+        damageScaling = 0.2
+    elif comboCount == 8:
+        damageScaling = 0.3
+    elif comboCount == 7:
+        damageScaling = 0.4
+    elif comboCount == 6:
+        damageScaling = 0.5
+    elif comboCount == 5:
+        damageScaling = 0.6
+    elif comboCount == 4:
+        damageScaling = 0.7
+    elif comboCount == 3:
+        damageScaling = 0.8
 
-# ryu = {
-#         "cl.lp":[30],
-#         "cl.mp":[70],
-#         "cl.hp":[100],
-#         "cl.lk":[30],
-#         "cl.mk":[80],
-#         "cl.hk":[40,70],
-#         "s.lp":[30],
-#         "s.mp":[80],
-#         "s.hp":[120],
-#         "s.lk":[40],
-#         "s.mk":[80],
-#         "s.hk":[110],
-#         "cr.lp":[30],
-#         "cr.mp":[60],
-#         "cr.hp":[90],
-#         "cr.lk":[20],
-#         "cr.mk":[60],
-#         "cr.hk":[90],
-#         "f.mp":[30,50],
-#         "f.hp":[40,60],
-#         "fa lv1":[60],
-#         "fa lv2": [80],
-#         "fa lv3":[140],
-#         "f.throw": [130],
-#         "b.throw":[130],
-#         "hado":[70],
-#         "hado ex": [50,50],
-#         "srk lp":[100],
-#         "srk mp":[80,50],
-#         "srk hp":[160],
-#         "srk ex":[80,60],
-#         "tatsu lk": [100],
-#         "tatsu mk": [110],
-#         "tatsu hk":[120],
-#         "tatsu ex":[30,30,30,30,40],
-#         "air tatsu lk":[70],
-#         "air tatsu mk":[80],
-#         "air tatsu hk":[90],
-#         "air tatsu ex":[40,40,40,40,40],
-#         "super": [50,50,50,50,100],
-#         "ultra1":[42,42,42,42,42,42,42,75],
-#         "ultra2": [270,233],
-#     	 }
+    print("HP before combo ", opponentCurrentHP)
+    if (opponentCurrentHP/opponentMaxHP) <= 0.15:
+        hpScaling = 0.75
+    elif (opponentCurrentHP/opponentMaxHP) <= 0.25:
+        hpScaling = 0.90
+    elif (opponentCurrentHP/opponentMaxHP) <= 0.50:
+        hpScaling = 0.95
 
-# user_input= str(input("Please enter an attack name:  "));
-# print(user_input);
+    print("Combo Count ", comboCount)
+    print("Attack value", x)
+    print("Total Damage before Subtraction ", total)
+    total = total + (hpScaling * damageScaling * int(x))
+    opponentCurrentHP = opponentCurrentHP - (hpScaling * damageScaling * int(x))
+    print("Total Damage to this point ", total)
+    print("HP after combo ", opponentCurrentHP)
+
+("Thank you for playing. Final total is ", opponentCurrentHP)
