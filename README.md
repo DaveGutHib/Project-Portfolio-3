@@ -2,7 +2,7 @@
  
 # Ultra Street Fighter 4 damage calculator
 
-![Banner image of game](/assets/images/Ultra_SF4_Banner.JPG)
+![Banner image of game](assets/images/Ultra_SF4_Banner.JPG)
 
 **Street Fighter 4** is a game that released in 2008 in arcades to worldwide positive acclaim and ushered in a new era of growth and interest in the entire genre of fighting games which persists to this day.
 
