@@ -21,6 +21,8 @@ opponentCurrentHP = inputHealth("What is your opponent's current HP: ")
 
 while x != "q":
     x = input("Enter the damage of the attack (press q to quit) ")
+    if (x == "q" or x == "Q"):
+        break
     comboCount = comboCount + 1
     if comboCount >= 10:
         damageScaling = 0.1
@@ -54,9 +56,7 @@ while x != "q":
     print("Total Damage before Subtraction ", total)
     total = total + (hpScaling * damageScaling * int(x))
     opponentCurrentHP = opponentCurrentHP - (hpScaling * damageScaling * int(x))
-    print("Total damage after Subtraction ", total)
+    print("Total Damage to this point ", total)
     print("HP after combo ", opponentCurrentHP)
 
-else: 
-    x = ""
-    print("Thank you for playing. Final total is ", total)
+("Thank you for playing. Final total is ", total)
